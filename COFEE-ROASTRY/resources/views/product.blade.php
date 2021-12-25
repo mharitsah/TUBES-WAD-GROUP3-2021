@@ -74,6 +74,7 @@
                 </div>
             </div>
 
+            
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
                             <div class="main-img"><img src="https://cf.shopee.co.id/file/006705ae05d0425320bda4b5caedc5c7" alt="Category"></div>
