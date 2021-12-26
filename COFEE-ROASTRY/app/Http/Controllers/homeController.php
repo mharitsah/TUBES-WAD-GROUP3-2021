@@ -16,4 +16,16 @@ class homeController extends Controller
     public function product(){
         return view('product');
     }
+
+    public function checkout(){
+        return view('checkout');
+    }
+
+    public function order(){
+        return view('order');
+    }
+
+    public function status(){
+        return view('status');
+    }
 }

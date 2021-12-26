@@ -3,26 +3,37 @@
 @section('section')
 
 <div class="row">
-    <div class="col-md-2">
-    <ul class="list-group">
-        <li class="list-group-item">Semua produk</li>
-        <li class="list-group-item">Discount</li>
-        <li class="list-group-item">Kategori</li>
-        <li class="list-group-item">Beans</li>
-        <li class="list-group-item">Powder</li>
-        <li class="list-group-item">Tools</li>
-        <li class="list-group-item">Urutan</li>
-        <li class="list-group-item">Terpopuler</li>
-        <li class="list-group-item">Terbaru</li>
-        <li class="list-group-item">Terlama</li>
-        <li class="list-group-item">Nama Produk</li>
-    </ul>
+    <div class="col-md-3">
+        <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3" style="width: 100%">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <nav class="nav nav-pills flex-column">
+                <a class="nav-link disabled text-dark" href="#item-1">Semua produk</a>
+                <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-1-1">Discount</a>
+                </nav>
+                <a class="nav-link disabled text-dark" href="#item-2">Kategori</a>
+                <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-2-1">Beans</a>
+                <a class="nav-link ms-3 my-1" href="#item-2-2">Powder</a>
+                <a class="nav-link ms-3 my-1" href="#item-2-3">Tools</a>
+                </nav>
+                <a class="nav-link disabled text-dark" href="#item-3">Urutan</a>
+                <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-3-1">Terpopuler</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-2">Terbaru</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-3">Terlama</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-4">Harga Tinggi</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-5">Harga Terendah</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-6">Nama Produk (A-Z)</a>
+                </nav>
+            </nav>
+        </nav>
     </div>
-    <div class="col-md-10">
+
+    <div class="col-md-9">
         <div class="row">
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                        
                             <div class="main-img"><img src="https://images.tokopedia.net/img/cache/400/WjdAsz/2021/8/28/30fb412c-8e35-4825-bd9d-fe58c79130eb.jpg?ect=4g" alt="Category"></div>
                     </a>
                     <div class="card-body text-center">
@@ -36,7 +47,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

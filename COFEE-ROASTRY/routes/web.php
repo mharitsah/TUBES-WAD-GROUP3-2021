@@ -25,3 +25,6 @@ Route::get('/register', [App\Http\Controllers\formController::class, 'register']
 #Controller untuk home
 Route::get('/aboutus', [App\Http\Controllers\homeController::class, 'aboutus']);
 Route::get('/product', [App\Http\Controllers\homeController::class, 'product']);
+Route::get('/checkout', [App\Http\Controllers\homeController::class, 'checkout']);
+Route::get('/order', [App\Http\Controllers\homeController::class, 'order']);
+Route::get('/status', [App\Http\Controllers\homeController::class, 'status']);
