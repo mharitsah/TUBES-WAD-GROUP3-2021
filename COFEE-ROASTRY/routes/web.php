@@ -20,6 +20,7 @@ Route::get('/', function () {
 #Controller untuk form
 Route::get('/login', [App\Http\Controllers\formController::class, 'login']);
 Route::get('/register', [App\Http\Controllers\formController::class, 'register']);
+Route::post('/register', [App\Http\Controllers\formController::class, 'daftar']);
 
 
 #Controller untuk home

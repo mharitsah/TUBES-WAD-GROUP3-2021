@@ -14,10 +14,10 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama produk');
-            $table->string('jumlah tersedia');
-            $table->int('harga');
+            $table->unsignedBigInteger('id')->primary();
+            $table->string('nama_barang');
+            $table->string('stok');
+            $table->integer('harga');
         });
     }
 
