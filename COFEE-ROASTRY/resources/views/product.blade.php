@@ -1,11 +1,19 @@
 @extends('layout')
-@section('judul','Home')
+@section('judul','Product')
 @section('section')
 
 <div class="row">
+    @if(session()->has('addChart'))
+    <div class="alert alert-success text-center" role="alert">
+    {{ session('addChart') }}
+    </div>
+    @endif
     <div class="col-md-3">
         <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3" style="width: 100%">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form action="/cari" method="post">
+                @csrf
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            </form>
             <nav class="nav nav-pills flex-column">
                 <a class="nav-link disabled text-dark" href="#item-1">Semua produk</a>
                 <nav class="nav nav-pills flex-column">
@@ -32,18 +40,30 @@
 
     <div class="col-md-9">
         <div class="row">
+            @foreach ($datas as $key=>$value)
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="main-img"><img src="https://images.tokopedia.net/img/cache/400/WjdAsz/2021/8/28/30fb412c-8e35-4825-bd9d-fe58c79130eb.jpg?ect=4g" alt="Category"></div>
+                            <div class="main-img"><img src="{{ asset('gambar_product/'.$value->gambar) }}" alt="Category"></div>
                     </a>
                     <div class="card-body text-center">
-                        <h4 class="card-title">Cofee Tubruk</h4>
-                        <p class="text-muted">Starting from $499</p><a class="btn btn-outline-success btn-sm m-2" href="#" data-abc="true">Buy Products</a><a class="btn btn-outline-primary btn-sm m-2" href="#" data-abc="true" data-bs-toggle="modal" data-bs-target="#produk1">Detail</a>
+                        <h5 class="card-title">{{ $value->nama_barang }}</h5>
+                        <p class="text-muted">{{ $value->berat }} Gr</p>
+                        <p class="text-muted">Rp. {{ $value->harga }}</p>
+                        <form class ="float-start ms-3" action="/buy" method="post">
+                            @csrf
+                            <input type="hidden" class="form-control" name="id_pembeli" id="id_pembeli" value="{{ auth()->user()->id }}"/>
+                            <input type="hidden" class="form-control" name="nama_produk" id="nama_produk" value="{{ $value->nama_barang }}"/>
+                            <input type="hidden" class="form-control" name="berat" id="berat" value="{{ $value->berat }}"/>
+                            <input type="hidden" class="form-control" name="harga" id="harga" value="{{ $value->harga }}"/>
+                            <input type="hidden" class="form-control" name="gambar" id="gambar" value="{{ $value->gambar }}"/>
+                            <button type="submit" class="btn btn-outline-success btn-sm m-2" data-abc="true">Add to chart</button>
+                        </form> 
+                        <a class="btn btn-outline-primary btn-sm m-2" href="#" data-abc="true" data-bs-toggle="modal" data-bs-target="#produk{{ $value->id }}">Detail</a>
                     </div>
                 </div>
             </div>
             
-            <div class="modal fade" id="produk1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="produk{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -53,13 +73,13 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
-                            <img src="https://images.tokopedia.net/img/cache/400/WjdAsz/2021/8/28/30fb412c-8e35-4825-bd9d-fe58c79130eb.jpg?ect=4g" alt="Category">
+                            <img src="{{ asset('gambar_product/'.$value->gambar) }}" alt="Category" style="width: 100%">
                             </div>
                             <div class="col-md-6">
                                 <table class="table table-borderless m-3">
                                     <tr>
                                         <th>Nama Produk</th>
-                                        <td>Cofee Tubruk Robusta</td>
+                                        <td>{{ $value->nama_barang }}</td>
                                     </tr>
                                     <tr>
                                         <th>Merk</th>
@@ -67,11 +87,11 @@
                                     </tr>
                                     <tr>
                                         <th>Stok Produk</th>
-                                        <td>120 Pcs</td>
+                                        <td>{{ $value->stok }} Pcs</td>
                                     </tr>
                                     <tr>
                                         <th>Harga</th>
-                                        <td>Rp. 300.000</td>
+                                        <td>Rp. {{ $value->harga }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -84,7 +104,7 @@
                     </div>
                 </div>
             </div>
-
+            @endforeach
             
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">

@@ -10,6 +10,20 @@
 
         <link rel="stylesheet" type="text/css" href="/css/layout.css">
 
+        <script>
+            function totalIt() {
+                var input = document.getElementsByName("harga[]");
+                var input2 = document.getElementsByName("jumlah[]");
+                var total = 0;
+                for (var i = 0; i < input.length; i++) {
+                    if (input[i].checked) {
+                    total += parseFloat(input[i].value * input2[i].value);
+                    }
+                }
+                document.getElementById("total").value = total;
+            }
+        </script>
+
 
     </head>
 <body>
@@ -22,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ url('/home')}}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,8 +46,7 @@
                         <li><a class="dropdown-item" href="{{ url('/product')}}">Product Items</a></li>
                         <li><a class="dropdown-item" href="#">Product Reviews</a></li>
                         <li><a class="dropdown-item" href="{{ url('/checkout')}}">Product Chart</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/order')}}">Product Order</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/status')}}">Product Status</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/order') }}">Product Order</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -46,14 +59,33 @@
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ms-auto">
             <div class="d-flex">
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-                <h5><i class="fas fa-shopping-cart text-light m-2"></i></h5>
+                <h5><a href="/checkout"><i class="fas fa-shopping-cart text-light m-2"></i></a></h5>
                 <h5><i class="fas fa-bell text-light m-2"></i></i></h5>
+                
+                @auth
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Selamat datang, {{ auth()->user()->nama_lengkap }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ url('/home')}}"><i class="fas fa-home"></i> Home</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                    </li>
+                @else
                 <a href="{{ url('/login')}}"><h5><i class="fas fa-sign-in-alt text-light m-2"> Login</i></h5></a>
+                @endauth
             </div>
+            </ul>
         </div>
     </div>
 </nav>
@@ -61,6 +93,7 @@
     @yield('section')
 </div>
 </body>
+
 <footer class="text-center" style="margin-top: 120px;" id="background">      
     <div class="text-center p-3" id="warnafooter">
     <div>

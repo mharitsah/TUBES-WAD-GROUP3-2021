@@ -1,32 +1,41 @@
 @extends('layout')
-@section('judul','Home')
+@section('judul','Your Chart')
 @section('section')
 
 <div class="container m-2">
     <h3>Item In Your Chart</h3>
 
 <br><br>
-
+    <form action="/order" method="post">
+    @csrf
+    @foreach ($datas as $key=>$value)
     <div class="form-check">
-        <input class="form-check-input mt-5" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input mt-5" type="checkbox" value="{{ $value->harga }}" id="checkAll{{ $value->id }}" name="harga[]" onclick="totalIt()">
+        <div class="d-none">
+        <input type="checkbox" class="check{{ $value->id }}" name="id_pembeli[]" id="id_pembeli" value="{{ auth()->user()->id }}"/>
+        <input type="checkbox" class="check{{ $value->id }}" name="id_produk[]" id="id_produk" value="{{ $value->id }}"/>
+        <input type="checkbox" class="check{{ $value->id }}" name="nama_produk[]" id="nama_produk" value="{{ $value->nama_produk }}"/>
+        <input type="checkbox" class="check{{ $value->id }}" name="gambar[]" id="gambar" value="{{ $value->gambar }}"/>
+        </div>
         <label class="form-check-label" for="flexCheckDefault" style="width:100%">
             <div class="row">
                 <div class="col-md-3">
-                <div class="aside ms-5"><img src="https://images.tokopedia.net/img/cache/400/WjdAsz/2021/8/28/30fb412c-8e35-4825-bd9d-fe58c79130eb.jpg?ect=4g" class="img-sm" width="150px"></div>
+                <div class="aside ms-5"><img src="{{ asset('gambar_product/'.$value->gambar) }}" class="img-sm" width="150px"></div>
                 </div>
 
                 <div class="col-md-2">
-                <div class="m-4">500 Gr 
-                <h4>Robusta</h4>
+                <div class="m-4">{{ $value->berat }} Gr 
+                <h4>{{ $value->nama_produk }}</h4>
                 </div>
                 <div class="input-group mb-3">
-                <input type="number" class="form-control ms-4" placeholder="(Pcs)" aria-label="jumlah" >
+                <input type="number" class="form-control ms-4" placeholder="(Pcs)" aria-label="jumlah" name="jumlah[]">
                 </div>
                 </div>
                 
                 <div class="col-md-6 mx-auto">
-                    <div class="mt-5 float-end">Rp. 120.000 <br><br>
-                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light" data-abc="true"> Remove</a>
+                    <div class="mt-5 float-end">Rp. {{ $value->harga }} <br><br>
+                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a>
+                    <a href="{{ url('/deletechart/'.$value->id) }}" class="btn btn-light" data-abc="true"> Remove</a>
                     </div>
                 </div>
             </div>
@@ -34,71 +43,27 @@
         </label>
     </div>
 
-    <div class="form-check">
-        <input class="form-check-input mt-5" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault" style="width:100%">
-            <div class="row">
-                <div class="col-md-3">
-                <div class="aside ms-5"><img src="https://images.tokopedia.net/img/cache/500-square/product-1/2020/8/21/9396396/9396396_633db9f5-ec6b-4c4c-a76d-45c00e75d1a4_444_444.jpg" class="img-sm" width="150px"></div>
-                </div>
-
-                <div class="col-md-2">
-                <div class="m-4">500 Gr 
-                <h4>Green Cofee</h4>
-                </div>
-                <div class="input-group mb-3">
-                <input type="number" class="form-control ms-4" placeholder="(Pcs)" aria-label="jumlah" >
-                </div>
-                </div>
-                
-                <div class="col-md-6 mx-auto">
-                    <div class="mt-5 float-end">Rp. 120.000 <br><br>
-                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light" data-abc="true"> Remove</a>
-                    </div>
-                </div>
-            </div>
-        <hr>
-        </label>
-    </div>
-
-    <div class="form-check">
-        <input class="form-check-input mt-5" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault" style="width:100%">
-            <div class="row">
-                <div class="col-md-3">
-                <div class="aside ms-5"><img src="https://images.tokopedia.net/img/cache/500-square/product-1/2019/12/20/72317749/72317749_6b285745-f17e-4540-9534-bcf41c5eabf8_980_980.jpg" class="img-sm" width="150px"></div>
-                </div>
-
-                <div class="col-md-2">
-                <div class="m-4">500 Gr 
-                <h4>Kopi Cinta</h4>
-                </div>
-                <div class="input-group mb-3">
-                <input type="number" class="form-control ms-4" placeholder="(Pcs)" aria-label="jumlah" >
-                </div>
-                </div>
-                
-                <div class="col-md-6 mx-auto">
-                    <div class="mt-5 float-end">Rp. 120.000 <br><br>
-                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light" data-abc="true"> Remove</a>
-                    </div>
-                </div>
-            </div>
-        <hr>
-        </label>
-    </div>
+    <script>
+    $("#checkAll{{ $value->id }}").click(function () {
+    $(".check{{ $value->id }}").prop('checked', $(this).prop('checked'));
+    });
+    </script>
+    @endforeach
 
     <div class="row mt-5">
         <div class="container">
         <div style="float:right">
             <div>
                 <h6>Sub Total</h6>
-                <h6>Rp. 360.000</h6>
+                <h6>Rp. <input value="0" readonly="readonly" type="text" id="total" name="total" style="border: 0; outline: 0; background: transparent; border-bottom: 1px solid #e5e5e5;"/></h6>
             </div>
-            <a class="btn btn-outline-success btn-sm mt-2" href="#" data-abc="true">Checkout</a>
+            <a href="{{ url('/order/'.auth()->user()->id) }}">
+            <button type="submit" class="btn btn-outline-success btn-sm m-2" data-abc="true">Checkout</button>
+            </a>
         </div>
         </div>
     </div>
+    </form>
 
 </div>
 

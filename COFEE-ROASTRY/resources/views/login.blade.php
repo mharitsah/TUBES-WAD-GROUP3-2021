@@ -28,6 +28,7 @@
 	<body>
 		<div class="container">
 			<div class="row main">
+
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
 	               		<h1 class="title">Cofee Roastery</h1>
@@ -35,8 +36,22 @@
 	               	</div>
 	            </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post" action="/login">
+						@csrf
 						<div class="form-group">
+
+						@if(session()->has('loginSuccess'))
+						<div class="alert alert-success text-center" role="alert">
+						{{ session('loginSuccess') }}
+						</div>
+						@endif
+
+						@if(session()->has('loginError'))
+						<div class="alert alert-danger text-center" role="alert">
+						{{ session('loginError') }}
+						</div>
+						@endif
+
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
@@ -57,10 +72,10 @@
 						</div>
 
 						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
+							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
 						</div>
 						<div class="login-register">
-				            <a href="{{ url('/register')}}">Create account</a> or <a href="reset_password.php">reset password</a>
+				            <a href="{{ url('/register')}}">Create account</a>
 				         </div>
 					</form>
 				</div>

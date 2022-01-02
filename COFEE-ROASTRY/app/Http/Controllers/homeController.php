@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\addChart;
-use App\Models\buyChart;
+use App\Models\product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
@@ -13,19 +13,41 @@ class homeController extends Controller
         return view('aboutus');
     }
 
-    public function product(){
-        return view('product');
+    public function home(){
+
+        $datas = product::all();
+
+        return view('home', compact('datas'));
     }
 
-    public function checkout(){
-        return view('checkout');
-    }
+    
+    
 
     public function order(){
         return view('order');
     }
 
-    public function status(){
-        return view('status');
+    public function cari(){
+
+        // $posts = homeController::latest();
+
+        // if(request('search')) {
+        //     $posts->where('like', '%' . request('search') . '%');
+        // }
+    }
+
+
+
+
+
+
+    public function logout(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

@@ -18,14 +18,27 @@ Route::get('/', function () {
 });
 
 #Controller untuk form
-Route::get('/login', [App\Http\Controllers\formController::class, 'login']);
-Route::get('/register', [App\Http\Controllers\formController::class, 'register']);
+Route::get('/login', [App\Http\Controllers\formController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [App\Http\Controllers\formController::class, 'loginAuth']);
+Route::get('/register', [App\Http\Controllers\formController::class, 'register'])->middleware('guest');
 Route::post('/register', [App\Http\Controllers\formController::class, 'daftar']);
 
-
 #Controller untuk home
-Route::get('/aboutus', [App\Http\Controllers\homeController::class, 'aboutus']);
-Route::get('/product', [App\Http\Controllers\homeController::class, 'product']);
-Route::get('/checkout', [App\Http\Controllers\homeController::class, 'checkout']);
-Route::get('/order', [App\Http\Controllers\homeController::class, 'order']);
-Route::get('/status', [App\Http\Controllers\homeController::class, 'status']);
+Route::get('/home', [App\Http\Controllers\homeController::class, 'home']);
+Route::get('/aboutus', [App\Http\Controllers\homeController::class, 'aboutus'])->middleware('guest');
+Route::post('/cari', [App\Http\Controllers\homeController::class, 'cari']);
+Route::post('/logout', [App\Http\Controllers\homeController::class, 'logout']);
+
+#Controller untuk product
+Route::get('/product', [App\Http\Controllers\productController::class, 'index'])->middleware('auth');
+Route::post('/buy', [App\Http\Controllers\productController::class, 'chart'])->middleware('auth');
+Route::get('/checkout', [App\Http\Controllers\productController::class, 'chartindex'])->middleware('auth');
+Route::post('/order', [App\Http\Controllers\productController::class, 'belanja'])->middleware('auth');
+Route::get('/order', [App\Http\Controllers\productController::class, 'orderindex']);
+Route::get('/deletechart/{id}', [App\Http\Controllers\productController::class, 'deletechart']);
+Route::get('/backchart/{id}', [App\Http\Controllers\productController::class, 'backchart']);
+Route::get('/alamat/{id}', [App\Http\Controllers\productController::class, 'alamat']);
+Route::post('/alamat/{id}', [App\Http\Controllers\productController::class, 'isialamat']);
+Route::get('/konfirmasi/{id}', [App\Http\Controllers\productController::class, 'konfirmasi']);
+Route::get('/pembayaran/{id}', [App\Http\Controllers\productController::class, 'pembayaran'])->middleware('auth');
+Route::post('/pembayaran/{id}', [App\Http\Controllers\productController::class, 'prosesbayar'])->middleware('auth');

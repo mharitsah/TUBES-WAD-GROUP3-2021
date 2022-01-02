@@ -1,7 +1,8 @@
 @extends('layout')
-@section('judul','Home')
+@section('judul','About us')
 @section('section')
-    <div class="container">
+    
+<div class="container">
         <h3 style="text-align: center; margin-top: 40px;">
             About Us
         </h3>
@@ -20,4 +21,5 @@
             </div> 
         </div>
     </div>
+
 @endsection
