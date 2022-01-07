@@ -6,7 +6,7 @@
     <h3>Item In Your Chart</h3>
 
 <br><br>
-    <form action="/order" method="post">
+    <form action="{{ url('/order/'.auth()->user()->id) }}" method="post">
     @csrf
     @foreach ($datas as $key=>$value)
     <div class="form-check">
@@ -57,9 +57,7 @@
                 <h6>Sub Total</h6>
                 <h6>Rp. <input value="0" readonly="readonly" type="text" id="total" name="total" style="border: 0; outline: 0; background: transparent; border-bottom: 1px solid #e5e5e5;"/></h6>
             </div>
-            <a href="{{ url('/order/'.auth()->user()->id) }}">
             <button type="submit" class="btn btn-outline-success btn-sm m-2" data-abc="true">Checkout</button>
-            </a>
         </div>
         </div>
     </div>

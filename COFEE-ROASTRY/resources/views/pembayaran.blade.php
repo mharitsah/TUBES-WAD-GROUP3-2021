@@ -34,6 +34,7 @@
                         <input type="hidden" class="form-control" name="tanggal_bayar" id="exampleInputText1" aria-describedby="textHelp" value="{{ date("Y-m-d"); }}">
                         <input type="hidden" class="form-control" name="id_pembeli" id="exampleInputText1" aria-describedby="textHelp" value="{{ auth()->user()->id }}">
                         <input type="hidden" class="form-control" name="total_bayar" id="exampleInputText1" aria-describedby="textHelp" value="{{ $grandtotal }}">
+                        <input type="hidden" class="form-control" name="status" id="exampleInputText1" aria-describedby="textHelp" value="tunggu">
                     </div>
                     <button type="submit" class="float-lg-end btn btn-outline-success btn-sm mt-2">Kirim</button>
                 </form>

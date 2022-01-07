@@ -11,6 +11,7 @@ use App\Models\alamat;
 use App\Models\pembayaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Redirector;
 
 class productController extends Controller
 {
@@ -31,9 +32,9 @@ class productController extends Controller
         return redirect('/product')->with('addChart', 'Berhasil menambahkan ke Chart');
     }
 
-    public function chartindex(){
+    public function chartindex($id){
         
-        $datas = chart::all();
+        $datas = chart::where('id_pembeli', $id)->get();
 
         return view('checkout', compact('datas'));
     }
@@ -54,7 +55,7 @@ class productController extends Controller
         }
 
         order::insert($inventory);
-        return redirect('order');
+        return redirect()->to('order/'.auth()->user()->id);
 
         // return request()->all();
 
@@ -64,9 +65,9 @@ class productController extends Controller
         
     }
 
-    public function orderindex(){
+    public function orderindex($id){
         
-        $datas = order::all();
+        $datas = order::where('id_pembeli', $id)->get();
 
 
         return view('order', compact('datas'));
@@ -119,13 +120,13 @@ class productController extends Controller
         }
 
 
-        return redirect('order');
+        return redirect()->to('order/'.auth()->user()->id);
     }
 
 
     public function pembayaran(Request $request, $id){
 
-        $bayar = order::all();
+        $bayar = order::where('id_pembeli', $id)->get();
 
         return view('pembayaran', compact('bayar'));
     }
@@ -142,14 +143,19 @@ class productController extends Controller
         $transaksi->tanggal_bayar = $request->tanggal_bayar;
         $transaksi->total_bayar = $request->total_bayar;
         $transaksi->bukti_transfer = $gambar;
+        $transaksi->status = $request->status;
 
         $transaksi->save();
         
-        return redirect('konfirmasi/{id}');
+        return redirect()->to('konfirmasi/'.auth()->user()->id);
     }
 
-    public function konfirmasi(){
-        return view('konfirmasi');
+    public function konfirmasi($id){
+
+
+        $statushow = pembayaran::where('id_pembeli', $id)->first();
+
+        return view('konfirmasi', compact('statushow'));
     }
 
 
@@ -161,7 +167,7 @@ class productController extends Controller
         $model = chart::find($id);
         $model->delete();
 
-        return redirect('checkout');
+        return redirect()->to('checkout/'.auth()->user()->id);
     }
 
     public function backchart($id){
@@ -169,7 +175,7 @@ class productController extends Controller
 
         order::where('id_pembeli', $id)->delete();
 
-        return redirect('checkout');
+        return redirect('product');
     }
 
 }

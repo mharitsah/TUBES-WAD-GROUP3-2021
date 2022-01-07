@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\order;
+use App\Models\pembayaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -50,4 +52,20 @@ class homeController extends Controller
 
         return redirect('/login');
     }
+
+
+
+
+    public function testing($id){
+
+        $testdata = order::where('id_pembeli', $id)->get();
+
+        $statushow = pembayaran::where('id_pembeli', $id)->first();
+
+        return view('testing', compact('testdata', 'statushow'));
+
+    }
 }
+
+
+    
