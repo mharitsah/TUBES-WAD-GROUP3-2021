@@ -39,9 +39,12 @@ class productController extends Controller
         return view('checkout', compact('datas'));
     }
 
-    public function belanja(Request $request){
+    public function belanja(Request $request, $id){
         
         for ($i = 0; $i < count($request->id_produk); $i++){
+
+            product::where('nama_barang', $request->nama_produk[$i])->first()->decrement('stok', $request->jumlah[$i]);
+
             $inventory[] = [
 
                 'id_produk' => $request->id_produk[$i],
@@ -83,6 +86,19 @@ class productController extends Controller
     
 
     public function alamat($id){
+
+        $hitung = alamat::where('id_pembeli', $id)->count();
+
+        if ( $hitung == 0){
+
+            $buatalamat = new alamat();
+            $buatalamat->id_pembeli = $id;
+
+            $buatalamat->save();
+
+        }else{
+
+        }
 
         $datas = customer::find($id);
 
@@ -147,13 +163,13 @@ class productController extends Controller
 
         $transaksi->save();
         
-        return redirect()->to('konfirmasi/'.auth()->user()->id);
+        return redirect()->to('riwayat/'.auth()->user()->id);
     }
 
     public function konfirmasi($id){
 
 
-        $statushow = pembayaran::where('id_pembeli', $id)->first();
+        $statushow = pembayaran::where('id_transaksi', $id)->first();
 
         return view('konfirmasi', compact('statushow'));
     }
@@ -176,6 +192,13 @@ class productController extends Controller
         order::where('id_pembeli', $id)->delete();
 
         return redirect('product');
+    }
+
+    public function riwayat($id){
+        
+        $datas = pembayaran::where('id_pembeli', $id)->get();
+
+        return view('riwayat', compact('datas'));
     }
 
 }

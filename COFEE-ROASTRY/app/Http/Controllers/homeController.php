@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\DB;
 class homeController extends Controller
 {
     public function aboutus(){
+
         return view('aboutus');
+    }
+
+    public function contactus(){
+
+        return view('contactus');
     }
 
     public function home(){
@@ -20,6 +26,13 @@ class homeController extends Controller
         $datas = product::all();
 
         return view('home', compact('datas'));
+    }
+
+    public function gallery(){
+
+        $datas = product::all();
+
+        return view('gallery', compact('datas'));
     }
 
     
