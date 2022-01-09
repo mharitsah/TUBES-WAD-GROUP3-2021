@@ -21,7 +21,7 @@
                 <p class="text-muted">No. Rekening</p>
                 <p>01783505704</p>
                 <p class="text-muted">Batas Pembayaran</p>
-                <p>5 Januari 2022</p>
+                <p>{{ now()->addDays(2)->format('Y-m-d') }} (48 Jam)</p>
                 <p>Total Bayar</p>
                 <p><b> Rp. {{ $grandtotal }}</b></p>
                 <p class="text-muted">Submit bukti pembayaran</p>

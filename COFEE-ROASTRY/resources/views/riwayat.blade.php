@@ -1,5 +1,5 @@
 @extends('layout')
-@section('judul','Product')
+@section('judul','Riwayat')
 @section('section')
 
 <div class="container-fluid" style=" padding-left: 50px; padding-top: 10px">
@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ $value->tanggal_bayar }}</td>
                         <td>{{ $value->id_transaksi }}</td>
-                        <td>Rp.{{ $value->total_bayar }}</td>
+                        <td>Rp. {{ $value->total_bayar }}</td>
                         <td>
                         <a href="{{ url('/konfirmasi/'.$value->id_transaksi) }}" class="btn btn-primary">Lihat Riwayat</a>
                         </td>

@@ -23,6 +23,43 @@ class productController extends Controller
         return view('product', compact('datas'));
     }
 
+    public function harga(){
+        
+        $datas = product::orderBy('harga', 'desc')->get();
+
+        return view('product', compact('datas'));
+    }
+
+    public function baru(){
+        
+        $datas = product::orderBy('created_at', 'desc')->get();
+
+        return view('product', compact('datas'));
+    }
+
+    public function lama(){
+        
+        $datas = product::orderBy('created_at', 'asc')->get();
+
+        return view('product', compact('datas'));
+    }
+
+    public function hargarendah(){
+        
+        $datas = product::orderBy('harga', 'asc')->get();
+
+        return view('product', compact('datas'));
+    }
+
+    public function nama(){
+        
+        $datas = product::orderBy('nama_barang', 'asc')->get();
+
+        return view('product', compact('datas'));
+    }
+
+    
+
     public function chart(){
         
         $keranjang = request()->all();

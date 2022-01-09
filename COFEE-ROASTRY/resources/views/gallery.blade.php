@@ -1,5 +1,5 @@
 @extends('layout')
-@section('judul','Konfirmasi')
+@section('judul','Gallery')
 @section('section')
 
 <div class="row">

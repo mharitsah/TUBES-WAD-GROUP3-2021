@@ -28,11 +28,11 @@
                 <a class="nav-link disabled text-dark" href="#item-3">Urutan</a>
                 <nav class="nav nav-pills flex-column">
                 <a class="nav-link ms-3 my-1" href="#item-3-1">Terpopuler</a>
-                <a class="nav-link ms-3 my-1" href="#item-3-2">Terbaru</a>
-                <a class="nav-link ms-3 my-1" href="#item-3-3">Terlama</a>
-                <a class="nav-link ms-3 my-1" href="#item-3-4">Harga Tinggi</a>
-                <a class="nav-link ms-3 my-1" href="#item-3-5">Harga Terendah</a>
-                <a class="nav-link ms-3 my-1" href="#item-3-6">Nama Produk (A-Z)</a>
+                <a class="nav-link ms-3 my-1" href="/baru">Terbaru</a>
+                <a class="nav-link ms-3 my-1" href="/lama">Terlama</a>
+                <a class="nav-link ms-3 my-1" href="/harga">Harga Tinggi</a>
+                <a class="nav-link ms-3 my-1" href="/hargarendah">Harga Terendah</a>
+                <a class="nav-link ms-3 my-1" href="/nama">Nama Produk (A-Z)</a>
                 </nav>
             </nav>
         </nav>
@@ -105,37 +105,6 @@
                 </div>
             </div>
             @endforeach
-            
-            <div class="col-md-4 col-sm-6">
-                <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="main-img"><img src="https://cf.shopee.co.id/file/006705ae05d0425320bda4b5caedc5c7" alt="Category"></div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Cofee Mix</h4>
-                        <p class="text-muted">Starting from $50</p><a class="btn btn-outline-success btn-sm m-2" href="#" data-abc="true">Buy Products</a><a class="btn btn-outline-primary btn-sm m-2" href="#" data-abc="true">Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="main-img"><img src="https://images.tokopedia.net/img/cache/500-square/attachment/2020/9/17/66236640/66236640_08a0a2e6-f16d-485b-8669-f88eccb7e280.jpg" alt="Category"></div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Cofee Arabika</h4>
-                        <p class="text-muted">Starting from $9</p><a class="btn btn-outline-success btn-sm m-2" href="#" data-abc="true">Buy Products</a><a class="btn btn-outline-primary btn-sm m-2" href="#" data-abc="true">Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="card mb-30"><a class="card-img-tiles" href="#" data-abc="true">
-                            <div class="main-img"><img src="https://cf.shopee.co.id/file/006705ae05d0425320bda4b5caedc5c7" alt="Category"></div>
-                    </a>
-                    <div class="card-body text-center">
-                        <h4 class="card-title">Cofee Mix</h4>
-                        <p class="text-muted">Starting from $50</p><a class="btn btn-outline-success btn-sm m-2" href="#" data-abc="true">Buy Products</a><a class="btn btn-outline-primary btn-sm m-2" href="#" data-abc="true">Detail</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

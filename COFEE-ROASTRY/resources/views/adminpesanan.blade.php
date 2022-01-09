@@ -1,5 +1,5 @@
 @extends('layoutadmin')
-@section('juduladmin','Alamat')
+@section('juduladmin','Admin Pesanan')
 @section('sectionadmin')
 
 <div class="container-fluid" style=" padding-left: 50px; padding-top: 10px">
@@ -21,7 +21,7 @@
                         <td>Rp.{{ $value->total_bayar }}</td>
                         <td>{{ $value->status }}</td>
                         <td>
-                        <button data-bs-toggle="modal" data-bs-target="#detail" type="button" class="btn btn-primary" name="detail">Detail</button>
+                        <a href="{{ url('/admin/bukti/'.$value->id_pembeli.'/'.$value->id_pembayaran) }}" class="btn btn-primary" data-abc="true">Detail</a>
                         </td>
                         <td>
                         <form action="{{ url('/admin/pesanan/terima/'.$value->id_pembayaran) }}" method="post">

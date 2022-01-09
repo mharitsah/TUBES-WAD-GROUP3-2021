@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\pembayaran;
+use App\Models\alamat;
+use App\Models\customer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Redirector;
@@ -98,6 +100,17 @@ class adminController extends Controller
         ]);
 
         return redirect('admin/pesanan');
+    }
+
+    public function bukticustomer($id, $id2){
+        
+        $pembayaran = pembayaran::where('id_pembayaran', $id2)->first();
+
+        $alamat = alamat::where('id_pembeli', $id)->first();
+
+        $customer = customer::where('id', $id)->first();
+
+        return view('bukticustomer', compact('pembayaran', 'alamat', 'customer'));
     }
 
     

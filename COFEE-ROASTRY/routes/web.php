@@ -51,6 +51,12 @@ Route::get('/konfirmasi/{id}', [App\Http\Controllers\productController::class, '
 Route::get('/pembayaran/{id}', [App\Http\Controllers\productController::class, 'pembayaran'])->middleware('auth');
 Route::post('/pembayaran/{id}', [App\Http\Controllers\productController::class, 'prosesbayar'])->middleware('auth');
 Route::get('/riwayat/{id}', [App\Http\Controllers\productController::class, 'riwayat'])->middleware('auth');
+Route::get('/harga', [App\Http\Controllers\productController::class, 'harga']);
+Route::get('/baru', [App\Http\Controllers\productController::class, 'baru']);
+Route::get('/lama', [App\Http\Controllers\productController::class, 'lama']);
+Route::get('/hargarendah', [App\Http\Controllers\productController::class, 'hargarendah']);
+Route::get('/nama', [App\Http\Controllers\productController::class, 'nama']);
+
 
 
 #Controller admin
@@ -63,6 +69,7 @@ Route::get('/admin/hapus/{id}', [App\Http\Controllers\adminController::class, 'h
 Route::get('/admin/pesanan', [App\Http\Controllers\adminController::class, 'adminpesanan'])->middleware('auth:webadmin');
 Route::post('/admin/pesanan/terima/{id}', [App\Http\Controllers\adminController::class, 'terimapesanan']);
 Route::post('/admin/pesanan/batal/{id}', [App\Http\Controllers\adminController::class, 'tolakpesanan']);
+Route::get('/admin/bukti/{id}/{id2}', [App\Http\Controllers\adminController::class, 'bukticustomer'])->middleware('auth:webadmin');
 
 #Controller guest
 Route::get('/product', [App\Http\Controllers\productController::class, 'index'])->middleware('auth');

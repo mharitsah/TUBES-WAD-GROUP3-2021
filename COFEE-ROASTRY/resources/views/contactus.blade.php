@@ -1,5 +1,5 @@
 @extends('layout')
-@section('judul','Konfirmasi')
+@section('judul','Contact us')
 @section('section')
 
 <!-- <div class="container-fluid"> -->

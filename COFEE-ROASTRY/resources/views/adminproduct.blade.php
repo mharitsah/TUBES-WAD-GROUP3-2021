@@ -1,9 +1,9 @@
 @extends('layoutadmin')
-@section('juduladmin','Alamat')
+@section('juduladmin','Admin Product')
 @section('sectionadmin')
     
 <div class="container-fluid" style=" padding-left: 80px; padding-top: 10px">
-        <a href="/admin/tambah" class="btn shadow btn-primary">Tambah Produk</a>
+        <a href="/admin/tambah" class="btn shadow btn-outline-primary">Tambah Produk</a>
             <div class="card shadow p-3 mb-5 bg-body rounded mt-2" style="width: 60rem;">
                 <table class="table">
                 

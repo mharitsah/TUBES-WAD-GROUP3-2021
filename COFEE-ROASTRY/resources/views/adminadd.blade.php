@@ -1,5 +1,5 @@
 @extends('layoutadmin')
-@section('juduladmin','Alamat')
+@section('juduladmin','tambah produk')
 @section('sectionadmin')
 
 <div class="container-fluid" style="padding-left: 50px; padding-top: 100px">
