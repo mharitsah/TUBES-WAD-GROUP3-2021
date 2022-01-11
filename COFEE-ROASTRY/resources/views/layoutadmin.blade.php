@@ -52,8 +52,6 @@
                         Selamat datang, {{ auth()->user()->nama_lengkap }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ url('/home')}}"><i class="fas fa-home"></i> Home</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="/logout" method="post">
                                 @csrf

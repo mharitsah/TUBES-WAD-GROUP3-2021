@@ -34,7 +34,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputText3" class="form-label">Kode pos</label>
-                                    <input type="text" class="form-control" name="kode_pos" id="exampleInputText3" aria-describedby="textHelp" value="{{ $datas2->kode_pos }}">
+                                    <input type="text" class="form-control @error('kode_pos') is-invalid @enderror" name="kode_pos" id="exampleInputText3" aria-describedby="textHelp" value="{{ $datas2->kode_pos }}">
+                                    @error('kode_pos')
+                                    <div id="validationServer03Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputText4" class="form-label">Nama jalan, Gedung, No. Rumah</label>

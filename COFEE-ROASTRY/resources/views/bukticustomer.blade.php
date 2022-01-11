@@ -14,6 +14,8 @@
                         <p>{{ now()->addDays(2)->format('Y-m-d') }} (48 Jam)</p>
                         <p class="text-muted">Total Bayar</p>
                         <p><b> Rp. {{ $pembayaran->total_bayar }}</b></p>
+                        <p class="text-muted">Nama Pemesan</p>
+                        <p>{{ $customer->nama_lengkap }}</p>
                         <p class="text-muted">Alamat</p>
                         <p>Jalan {{ $alamat->nama_jalan }}, kec. {{ $alamat->kecamatan }}, kota {{ $alamat->kota }}, provinsi {{ $alamat->provinsi }}, {{ $alamat->kode_pos }}</p>
                     </div>

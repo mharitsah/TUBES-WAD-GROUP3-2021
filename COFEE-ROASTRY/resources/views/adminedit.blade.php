@@ -14,15 +14,30 @@
                     </div>
                     <div class="mb-3">
                         <label for="berat" class="form-label"><b>Berat</b></label>
-                        <input type="text" class="form-control" id="berat" name="berat" value="{{ $datas->berat }}" placeholder="500 gr" required>
+                        <input type="text" class="form-control @error('berat') is-invalid @enderror" id="berat" name="berat" value="{{ $datas->berat }}" placeholder="500 gr">
+                        @error('berat')
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="stok" class="form-label"><b>Stok</b></label>
-                        <input type="text" class="form-control" id="stok" name="stok" value="{{ $datas->stok }}" placeholder="123" required>
+                        <input type="text" class="form-control @error('stok') is-invalid @enderror" id="stok" name="stok" value="{{ $datas->stok }}" placeholder="123">
+                        @error('stok')
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="harga" class="form-label"><b>Harga</b></label>
-                        <input type="text" class="form-control" id="harga" name="harga" value="{{ $datas->harga }}" placeholder="Rp. 100.000" required>
+                        <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" value="{{ $datas->harga }}" placeholder="Rp. 100.000">
+                        @error('harga')
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="gambar" class="form-label"><b>Gambar</b></label>

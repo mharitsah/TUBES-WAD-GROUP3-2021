@@ -162,6 +162,11 @@ class productController extends Controller
             $buat->save();
             
         }else{
+
+            $validatedData = $request->validate([
+                'kode_pos' => 'required|numeric'
+            ]);
+
             alamat::where('id_pembeli', $id)->update([
                 'id_pembeli' => $request->input('id_pembeli'),
                 'provinsi' => $request->input('provinsi'),

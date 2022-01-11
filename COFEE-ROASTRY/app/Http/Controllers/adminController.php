@@ -29,6 +29,12 @@ class adminController extends Controller
 
     public function addproduct(Request $request){
 
+        $validatedData = $request->validate([
+            'berat' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric'
+        ]);
+
         $foto_product = time().'.'.$request->gambar->extension();
         $request->gambar->move(public_path('gambar_product'), $foto_product);
         $tambah = new product();
@@ -53,6 +59,12 @@ class adminController extends Controller
     }
 
     public function editproduct(Request $request, $id){
+
+        $validatedData = $request->validate([
+            'berat' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'harga' => 'required|numeric'
+        ]);
 
         $foto_product = time().'.'.$request->gambar->extension();
         $request->gambar->move(public_path('gambar_product'), $foto_product);
