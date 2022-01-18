@@ -36,6 +36,7 @@ Route::post('/cari', [App\Http\Controllers\homeController::class, 'cari']);
 Route::post('/logout', [App\Http\Controllers\homeController::class, 'logout']);
 Route::get('/testing/{id}', [App\Http\Controllers\homeController::class, 'testing']);
 Route::get('/contactus', [App\Http\Controllers\homeController::class, 'contactus']);
+Route::get('/cekresi', [App\Http\Controllers\homeController::class, 'cekresi'])->middleware('auth');
 
 #Controller untuk product
 Route::get('/product', [App\Http\Controllers\productController::class, 'index'])->middleware('auth');

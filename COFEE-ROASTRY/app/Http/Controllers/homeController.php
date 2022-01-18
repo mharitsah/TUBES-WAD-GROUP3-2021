@@ -8,12 +8,30 @@ use App\Models\order;
 use App\Models\pembayaran;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
 
 class homeController extends Controller
 {
     public function aboutus(){
 
         return view('aboutus');
+    }
+
+    public function cekresi(Request $request){
+
+        $client = new Client();
+        $response = $client->request('GET', 'https://merchant-api-sandbox.shipper.id/v3/order/'.$request->resi, [
+            'headers' => [
+              'Accept' => 'application/json',
+              'X-API-Key' => 'TXhl2k9M7cLZmTmMN7TFU8yqsWBTdTeAOpqtdMFQMLCCR659RiJIsqcKuDMdjHcp',
+            ],
+        ]);
+
+        $json = $response->getBody();
+        $datas = json_decode($json, true);
+
+        return view('cekresi', compact('datas'));
     }
 
     public function contactus(){
@@ -63,7 +81,7 @@ class homeController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/aboutus');
     }
 
 
@@ -71,11 +89,18 @@ class homeController extends Controller
 
     public function testing($id){
 
-        $testdata = order::where('id_pembeli', $id)->get();
+        $client = new Client();
+        $response = $client->request('GET', 'https://merchant-api-sandbox.shipper.id/v3/order/'.$id, [
+            'headers' => [
+              'Accept' => 'application/json',
+              'X-API-Key' => 'TXhl2k9M7cLZmTmMN7TFU8yqsWBTdTeAOpqtdMFQMLCCR659RiJIsqcKuDMdjHcp',
+            ],
+        ]);
 
-        $statushow = pembayaran::where('id_pembeli', $id)->first();
+        $json = $response->getBody();
+        $datas = json_decode($json, true);
 
-        return view('testing', compact('testdata', 'statushow'));
+        return view('testing', compact('datas'));
 
     }
 }

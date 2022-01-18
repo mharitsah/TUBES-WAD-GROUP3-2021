@@ -29,7 +29,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="formFileSm" class="form-label">Small file input example</label>
-                        <input class="form-control form-control-sm" name="bukti_transfer" id="formFileSm" type="file">
+                        <input class="form-control form-control-sm" name="bukti_transfer" id="formFileSm" type="file" required>
                         <input type="hidden" class="form-control" name="id_transaksi" id="exampleInputText1" aria-describedby="textHelp" value="{{ rand(0, 99999999); }}">
                         <input type="hidden" class="form-control" name="tanggal_bayar" id="exampleInputText1" aria-describedby="textHelp" value="{{ date("Y-m-d"); }}">
                         <input type="hidden" class="form-control" name="id_pembeli" id="exampleInputText1" aria-describedby="textHelp" value="{{ auth()->user()->id }}">

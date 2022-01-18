@@ -13,9 +13,13 @@
                     <br>
                     <br>
                     <p>
-                    Lebih dekat melalui saluran WA : 0881-1327-918, IG: berkahjaya_roastery
+                    Lebih dekat melalui saluran :
                     <br>
-                    Email:berkah.jaya.coffeeroastery@gmail.com 
+                    <i class="fab fa-whatsapp text-dark"></i> Whatsapp : 0881-1327-918
+                    <br> 
+                    <i class="fab fa-instagram text-dark"></i> Instagram : <a href="https://www.instagram.com/berkahjaya_roastery/">berkahjaya_roastery</a>
+                    <br>
+                    <i class="far fa-envelope text-dark"></i> Email: berkah.jaya.coffeeroastery@gmail.com 
                     <br> 
                     Tokopedia: <a href="http://tokopedia.link/berkahjayaroastery">tokopedia.link/berkahjayaroastery</a>
                     </p>

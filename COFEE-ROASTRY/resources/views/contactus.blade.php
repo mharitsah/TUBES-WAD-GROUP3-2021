@@ -20,7 +20,7 @@
                             <div class="row m-2">
                                 <p class="card-header"><b>Contact</b></p>
                                 <p>Phone : +628 2273 8233 00</p>
-                                <p>Email : abc@gmail.com</p>
+                                <p>Email : berkah.jaya.coffeeroastery@gmail.com</p>
                             </div>
                         </div>
                     </div>

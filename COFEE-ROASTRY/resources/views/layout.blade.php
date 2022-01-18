@@ -6,7 +6,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
         <link rel="stylesheet" type="text/css" href="/css/layout.css">
 
@@ -46,7 +46,6 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ url('/product')}}">Product Items</a></li>
-                        <li><a class="dropdown-item" href="#">Product Reviews</a></li>
                         <li><a class="dropdown-item" href="{{ url('/checkout/'.auth()->user()->id) }}">Product Chart</a></li>
                         <li><a class="dropdown-item" href="{{ url('/order/'.auth()->user()->id) }}">Product Order</a></li>
                     </ul>
@@ -98,16 +97,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/home')}}">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Product
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ url('/product')}}">Product Items</a></li>
-                        <li><a class="dropdown-item" href="#">Product Reviews</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/checkout')}}">Product Chart</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/order') }}">Product Order</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/product')}}">Product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/gallery')}}">Gallery</a>
@@ -122,8 +113,6 @@
 
             <ul class="navbar-nav ms-auto">
             <div class="d-flex">
-                <h5><a href="/checkout"><i class="fas fa-shopping-cart text-light m-2"></i></a></h5>
-                <h5><i class="fas fa-bell text-light m-2"></i></i></h5>
                 <a href="{{ url('/login')}}"><h5><i class="fas fa-sign-in-alt text-light m-2"> Login</i></h5></a>
             </div>
             </ul>

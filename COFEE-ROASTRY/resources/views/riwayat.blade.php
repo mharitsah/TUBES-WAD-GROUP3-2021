@@ -4,6 +4,20 @@
 
 <div class="container-fluid" style=" padding-left: 50px; padding-top: 10px">
 
+    <form class="row g-3 d-flex justify-content-center" action="/cekresi" method="get">
+        @csrf
+        <div class="col-auto">
+            <label for="staticEmail2" class="visually-hidden">Cek resi</label>
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Cek resi anda :">
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">ID resi</label>
+            <input type="text" class="form-control" name="resi" id="inputPassword2" placeholder="ID resi">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Cek resi</button>
+        </div>
+    </form>
     @if ($datas->count() === 0)
 
         <div class="text-center m-5">
@@ -26,7 +40,7 @@
                         <td>{{ $value->id_transaksi }}</td>
                         <td>Rp. {{ $value->total_bayar }}</td>
                         <td>
-                        <a href="{{ url('/konfirmasi/'.$value->id_transaksi) }}" class="btn btn-primary">Lihat Riwayat</a>
+                        <a href="{{ url('/konfirmasi/'.$value->id_transaksi) }}" class="btn btn-outline-primary">Lihat Riwayat</a>
                         </td>
                     </tr>
                 @endforeach
@@ -34,6 +48,7 @@
                 </table>
             </div>
     @endif
-        </div>
+    <a class="btn btn-danger btn-sm mt-2 d-flex justify-content-center" href="/home" data-abc="true" style="width: 91%">Kembali</a>
+</div>
 
 @endsection
